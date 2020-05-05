@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Flight">
+
+
+  <insert id="insert_flight_list">
+    INSERT INTO deu_se.FLIGHT_LIST
+        (airplane_name, start_airport, dest_airport, via, identifier, status, start_date, end_date, airline_kor, first_seat_num, business_seat_num, economy_seat_num, sign) VALUES 
+        (#{airplane_name}, #{start_airport}, #{dest_airport}, #{via}, #{identifier}, #{status}, #{start_date}, #{end_date}, #{airline_kor}, #{first_seat_num}, #{business_seat_num},
+        #{economy_seat_num},#{sign})        
+  </insert>
+
+
+  <update id="sign_flight_list">
+  UPDATE deu_se.FLIGHT_LIST SET sign=TRUE WHERE identifier=#{identifier}
+  </update>
+
+<update id="update_flight_list">
+  UPDATE deu_se.FLIGHT_LIST SET airplane_name=#{airplane_name}, start_airport=#{start_airport}, dest_airport=#{dest_airport}, via=#{via}, identifier={#identifier}, status={#status},
+  start_date = {#start_date}, end_date = {#end_date}, airline_kor = {#airline_kor}, first_seat_num = {#first_seat_num}, business_seat_num={#business_seat_num}, economy_seat_num={#economy_seat_num},
+  sign = {#sign} WHERE identifier=#{identifier}
+  </update>
+
+  <select id="airline_flight_list">
+  SELECT * FROM deu_se.FLIGHT_LIST where airline_kor=#{airline_kor}
+
+  <select id="date_flight_list"> 
+  SELECT * FROM deu_se.FLIGHT_LIST where DATE_FORMAT(start_date,'%Y-%m-%d')=DATE_FOMRAT(#{start_date},'%Y-%m-%d');
+
+  
+
+</mapper>

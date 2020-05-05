@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Auth">
+
+  <select id="check_customer">
+    SELECT id FROM deu_se.CUSTOMER_LIST
+    WHERE id = #{id}
+  </select>
+
+    <select id="check_airline_staff">
+    SELECT id FROM deu_se.AIRLINE_STAFF_LIST
+    WHERE id = #{id}
+  </select>
+
+  <insert id="insert_customer">
+    INSERT INTO deu_se.CUSTOMER_LIST
+        (name_eng, name_kor, id, pw, passport_num, passport_exp, birth, gender, address, tel, passport_issue) VALUES 
+        (#{name_eng}, #{name_kor}, #{id}, #{pw}, #{passport_num}, #{passport_exp}, #{birth}, #{gender}, #{address}, #{tel}, #{passport_issue})        
+  </insert>
+
+    <insert id="insert_airline_staff">
+    INSERT INTO deu_se.AIRLINE_STAFF_LIST
+        (name_eng, name_kor, id, pw, birth, gender, tel, airline_kor, position, sign) VALUES 
+        (#{name_eng}, #{name_kor}, #{id}, #{pw}, #{birth}, #{gender}, #{tel}, #{airline_kor}, #{position}, #{sign})        
+  </insert>
+
+  <select id="login_customer">
+    SELECT id
+         , pw
+      FROM deu_se.CUSTOMER_LIST
+     WHERE id = #{id} AND pw = #{pw}
+  </select>
+
+    <select id="login_airline_staff">
+    SELECT id
+         , pw
+      FROM deu_se.AIRLINE_STAFF_LIST
+     WHERE id = #{id} AND pw = #{pw}
+  </select>
+
+      <select id="login_airport_staff">
+    SELECT id
+         , pw
+      FROM deu_se.AIRPORT_STAFF_LIST
+     WHERE id = #{id} AND pw = #{pw}
+  </select>
+
+  <update id="sign_airline_staff">
+  UPDATE deu_se.AIRLINE_STAFF_LIST SET sign=TRUE WHERE id=#{id}
+
+
+  </update>
+
+  
+
+</mapper>

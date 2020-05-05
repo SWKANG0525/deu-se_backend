@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Booking">
+
+
+  <insert id="insert_booking_list">
+    INSERT INTO deu_se.BOOKING_LIST
+        (identifier, seat_grade, seat_num, customer_id, beggage_weight, car_number) VALUES 
+        (#{identifier}, #{seat_grade}, #{seat_num}, #{customer_id}, #{beggage_weight}, #{car_number})    
+   </insert>
+
+   <select id="select_booking_list_identifier">
+     SELECT * FROM deu_se.BOOKING_LIST where identifier=#{identifier}
+   </select>
+    <select id="select_booking_list_id">
+     SELECT * FROM deu_se.BOOKING_LIST where customer_id=#{customer_id}
+   </select>
+
+
+</mapper>
