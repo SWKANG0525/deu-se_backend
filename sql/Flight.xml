@@ -23,10 +23,12 @@
 
   <select id="airline_flight_list">
   SELECT * FROM deu_se.FLIGHT_LIST where airline_kor=#{airline_kor}
+  </select>
 
   <select id="date_flight_list"> 
-  SELECT * FROM deu_se.FLIGHT_LIST where DATE_FORMAT(start_date,'%Y-%m-%d')=DATE_FOMRAT(#{start_date},'%Y-%m-%d');
-
+  SELECT airplane_name, start_airport, dest_airport, via, identifier, status, DATE_FORMAT(start_date,'%h:%i:%s')as start_date, DATE_FORMAT(end_date, '%h:%i:%s')as end_date, airline_kor, first_seat_num, business_seat_num, economy_seat_num, sign
+   FROM deu_se.FLIGHT_LIST where DATE(start_date)=DATE(#{start_date})
+  </select>
   
 
 </mapper>

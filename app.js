@@ -8,13 +8,8 @@ var logger = require('morgan');
 var app = express();
 
 
-const PORT = 3030;
 const cors = require('cors');
 
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/user.js');
-var AuthRouter = require('./routes/auth.js');
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -25,9 +20,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+var indexRouter = require('./routes/index');
+var AuthRouter = require('./routes/auth.js');
+var RegisterRouter = require('./routes/register.js');
+var FlightRouter = require('./routes/flight.js');
+
 app.use('/', indexRouter);
-app.use('/', usersRouter);
 app.use('/', AuthRouter);
+app.use('/', RegisterRouter);
+app.use('/', FlightRouter);
 
 
 

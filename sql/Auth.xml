@@ -20,8 +20,8 @@
 
     <insert id="insert_airline_staff">
     INSERT INTO deu_se.AIRLINE_STAFF_LIST
-        (name_eng, name_kor, id, pw, birth, gender, tel, airline_kor, position, sign) VALUES 
-        (#{name_eng}, #{name_kor}, #{id}, #{pw}, #{birth}, #{gender}, #{tel}, #{airline_kor}, #{position}, #{sign})        
+        (name_eng, name_kor, id, pw, birth, gender, tel, airline_kor, position) VALUES 
+        (#{name_eng}, #{name_kor}, #{id}, #{pw}, #{birth}, #{gender}, #{tel}, #{airline_kor}, #{position})        
   </insert>
 
   <select id="login_customer">
@@ -33,7 +33,7 @@
 
     <select id="login_airline_staff">
     SELECT id
-         , pw
+         , pw , airline_kor
       FROM deu_se.AIRLINE_STAFF_LIST
      WHERE id = #{id} AND pw = #{pw}
   </select>
