@@ -71,6 +71,27 @@ app.post('/flight/register', function(req, res) {
       }); 
 });
 
+app.post('/flight/list', function(req, res) {
+
+  let params = req.body;  
+  let query = mapper.getStatement('Flight', 'airline_flight_list', params, format);
+  console.log(query);
+
+  dbconn.query(query, function(err, result, fields) {
+      if (err) {
+              res.status(200).json({
+                  "result":err // Query Error
+              })
+              return;
+          } else {
+
+              res.status(200).json({
+                  "result":result// 정상
+              });
+              return;
+          }
+      }); 
+});
 
 
 

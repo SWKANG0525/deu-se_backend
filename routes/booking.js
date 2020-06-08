@@ -166,5 +166,28 @@ app.post('/booking/flight', function (req, res) {
     }); 
 });
 
+app.post('/booking/list', function (req, res) {
+
+
+    let params = req.body;
+    let query = mapper.getStatement('Booking', 'select_booking_list_identifier', params, format);
+    console.log(query);
+
+    dbconn.query(query, function (err, result, fields) {
+
+        if (err) {
+            res.status(200).json({
+                "result":err // Query Error
+            })
+            return;
+        } else {
+
+            res.status(200).json({
+                "result":result // 정상
+            });
+            return;
+        }
+    }); 
+});
 
 module.exports = app;

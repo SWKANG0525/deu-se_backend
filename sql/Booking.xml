@@ -15,6 +15,7 @@
     <select id="select_booking_list_id">
      SELECT * FROM deu_se.BOOKING_LIST where customer_id=#{customer_id}
    </select>
+
    <select id="select_booking_list_count">
      SELECT seat_grade, count(seat_grade) AS seat_num FROM deu_se.BOOKING_LIST WHERE identifier=#{identifier} GROUP BY seat_grade;
   
