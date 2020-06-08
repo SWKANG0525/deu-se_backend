@@ -5,8 +5,8 @@
 
   <insert id="insert_booking_list">
     INSERT INTO deu_se.BOOKING_LIST
-        (identifier, seat_grade, seat_num, customer_id, beggage_weight, car_number) VALUES 
-        (#{identifier}, #{seat_grade}, #{seat_num}, #{customer_id}, #{beggage_weight}, #{car_number})    
+        (identifier, seat_grade, seat_num, customer_id, baggage_weight, car_number) VALUES 
+        (#{identifier}, #{seat_grade}, #{seat_num}, #{customer_id}, #{baggage_weight}, #{car_number})    
    </insert>
 
    <select id="select_booking_list_identifier">
@@ -14,6 +14,10 @@
    </select>
     <select id="select_booking_list_id">
      SELECT * FROM deu_se.BOOKING_LIST where customer_id=#{customer_id}
+   </select>
+   <select id="select_booking_list_count">
+     SELECT seat_grade, count(seat_grade) AS seat_num FROM deu_se.BOOKING_LIST WHERE identifier=#{identifier} GROUP BY seat_grade;
+  
    </select>
 
 

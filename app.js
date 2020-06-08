@@ -27,11 +27,12 @@ var indexRouter = require('./routes/index');
 var AuthRouter = require('./routes/auth.js');
 var RegisterRouter = require('./routes/register.js');
 var FlightRouter = require('./routes/flight.js');
-
+var BookingRouter = require('./routes/booking.js');
 app.use('/', indexRouter);
 app.use('/', AuthRouter);
 app.use('/', RegisterRouter);
 app.use('/', FlightRouter);
+app.use('/', BookingRouter);
 
 
 

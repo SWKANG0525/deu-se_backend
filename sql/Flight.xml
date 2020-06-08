@@ -29,6 +29,9 @@
   SELECT airplane_name, start_airport, dest_airport, via, identifier, status, DATE_FORMAT(start_date,'%h:%i:%s')as start_date, DATE_FORMAT(end_date, '%h:%i:%s')as end_date, airline_kor, first_seat_num, business_seat_num, economy_seat_num, sign
    FROM deu_se.FLIGHT_LIST where DATE(start_date)=DATE(#{start_date})
   </select>
+
+  <select id="select_flight_book_count">
+  SELECT first_seat_num,business_seat_num,economy_seat_num FROM deu_se.FLIGHT_LIST WHERE identifier=#{identifier};
   
 
 </mapper>
