@@ -93,6 +93,39 @@ app.post('/flight/list', function(req, res) {
       }); 
 });
 
+app.post('/flight/identifier', function(req, res) {
+
+  let params = req.body;  
+  let query = mapper.getStatement('Flight', 'airline_flight_list_identifier', params, format);
+  console.log(query);
+
+  dbconn.query(query, function(err, result, fields) {
+      if (err) {
+              res.status(200).json({
+                  "result":err // Query Error
+              })
+              return;
+          } else {
+
+              res.status(200).json({
+                "airplane_name": result[0].airplane_name,
+                "start_airport": result[0].start_airport,
+                "dest_airport":  result[0].dest_airport,
+                "via": result[0].via,
+                "identifier": result[0].identifier,
+                "status": result[0].status,
+                "start_date": result[0].start_date,
+                "end_date": result[0].end_date,
+                "airline_kor": result[0].airline_kor,
+                "first_seat_num": result[0].first_seat_num,
+                "business_seat_num": result[0].business_seat_num,
+                "economy_seat_num": result[0].economy_seat_num,
+                "sign": result[0].sign
+              });
+              return;
+          }
+      }); 
+});
 
 
 

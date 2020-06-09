@@ -150,7 +150,6 @@ app.post('/booking/flight', function (req, res) {
     console.log(query);
 
     dbconn.query(query, function (err, result, fields) {
-
         if (err) {
             res.status(200).json({
                 "result":err // Query Error
@@ -190,4 +189,52 @@ app.post('/booking/list', function (req, res) {
     }); 
 });
 
+app.post('/booking/customer_id', function (req, res) {
+
+    
+    let params = req.body;
+    let query = mapper.getStatement('Booking', 'select_booking_list_id', params, format);
+    console.log(query);
+
+    dbconn.query(query, function (err, result, fields) {
+
+        if (err) {
+            res.status(200).json({
+                "result":err // Query Error
+            })
+            return;
+        } else {
+
+            res.status(200).json({
+                "result":result // 정상
+            });
+            return;
+        }
+    }); 
+});
+
+app.post('/booking/delete', function (req, res) {
+
+    
+    let params = req.body;
+    let query = mapper.getStatement('Booking', 'delete_booking_id', params, format);
+    console.log(query);
+
+    dbconn.query(query, function (err, result, fields) {
+
+        if (err) {
+            res.status(500).json({
+                "result":err // Query Error
+            })
+            return;
+        } 
+        
+        else {
+            res.status(200).json({
+                "result":"true"// 정상
+            });
+            return;
+        }
+    }); 
+});
 module.exports = app;

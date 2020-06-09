@@ -21,5 +21,11 @@
   
    </select>
 
+   <delete id="delete_booking_id">
+    DELETE FROM deu_se.BOOKING_LIST where id=#{id};
+   </delete>
+
+
+
 
 </mapper>
