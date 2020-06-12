@@ -46,10 +46,17 @@
   </select>
 
   <update id="sign_airline_staff">
-  UPDATE deu_se.AIRLINE_STAFF_LIST SET sign=TRUE WHERE id=#{id}
-
-
+  UPDATE deu_se.AIRLINE_STAFF_LIST SET sign=TRUE WHERE id=#{id} 
   </update>
+
+  <select id="select_customer_name">
+  select name_kor FROM CUSTOMER_LIST WHERE id=#{id}
+  </select>
+
+  
+  <select id="select_airline_staff_name">
+  select name_kor FROM AIRLINE_STAFF_LIST WHERE id=#{id}
+  </select>
 
   
 

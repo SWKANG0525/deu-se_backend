@@ -230,6 +230,75 @@ app.get('/airline_staffs/:id', function(req, res) {
 });
 });
 
+app.post('/customers/name', function(req, res) {
+
+  let params = req.body;
+  let query = mapper.getStatement('Auth', 'select_customer_name', params, format);
+  
+  console.log(query);
+  
+  dbconn.query(query, function(err, result, fields) {
+ 
+          if (result.length != 0){ //결과 없음
+              res.status(200).json({  
+                  "result":result[0].name_kor // 정상
+              });
+              return;
+          }
+
+          else if (result.length == 0){
+            res.status(200).json({
+              "result":"false" // 정상
+          });
+              return;
+          } 
+          
+          else {
+              if (err) {
+                res.status(500).json({
+                  "result":err // 정상
+              });
+              }            
+              return;
+          }
+      
+});
+});
+
+app.post('/airline_staff/name', function(req, res) {
+
+  let params = req.body;
+  let query = mapper.getStatement('Auth', 'select_airline_staff_name', params, format);
+  
+  console.log(query);
+  
+  dbconn.query(query, function(err, result, fields) {
+ 
+          if (result.length != 0){ //결과 없음
+              res.status(200).json({  
+                  "result":result[0].name_kor // 정상
+              });
+              return;
+          }
+
+          else if (result.length == 0){
+            res.status(200).json({
+              "result":"false" // 정상
+          });
+              return;
+          } 
+          
+          else {
+              if (err) {
+                res.status(500).json({
+                  "result":err // 정상
+              });
+              }            
+              return;
+          }
+      
+});
+});
 app.get('/version', function(req, res) {
 
  
