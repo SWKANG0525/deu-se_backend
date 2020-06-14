@@ -237,4 +237,28 @@ app.post('/booking/delete', function (req, res) {
         }
     }); 
 });
+
+app.post('/booking/amount', function (req, res) {
+
+
+    let params = req.body;
+    let query = mapper.getStatement('Booking', 'select_booking_amount', params, format);
+    console.log(query);
+
+    dbconn.query(query, function (err, result, fields) {
+
+        if (err) {
+            res.status(200).json({
+                "result":err // Query Error
+            })
+            return;
+        } else {
+
+            res.status(200).json({
+                "result":result[0].book_amount // 정상
+            });
+            return;
+        }
+    }); 
+});
 module.exports = app;

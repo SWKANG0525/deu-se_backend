@@ -21,6 +21,9 @@
   
    </select>
 
+   <select id="select_booking_amount">
+    SELECT count(deu_se.BOOKING_LIST.identifier) AS book_amount FROM deu_se.BOOKING_LIST JOIN deu_se.AIRLINE_LIST WHERE deu_se.AIRLINE_LIST.airline_kor=#{airline_kor};
+    </select>
    <delete id="delete_booking_id">
     DELETE FROM deu_se.BOOKING_LIST where id=#{id};
    </delete>
