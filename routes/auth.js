@@ -303,7 +303,7 @@ app.get('/version', function(req, res) {
 
  
                 res.status(200).json({
-                  "version":"Beta 1.0.5" // 정상
+                  "version":"Beta 1.0.6" // 정상
               });
                       
              
