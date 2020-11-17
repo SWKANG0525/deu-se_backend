@@ -1,3 +1,3 @@
 let jwtObj = {};
-jwtObj.secret = "zjathrhd@0503"
+jwtObj.secret = ""
 module.exports = jwtObj
